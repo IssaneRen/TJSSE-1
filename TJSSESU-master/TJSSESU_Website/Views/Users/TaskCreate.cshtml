@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "../Shared/TaskLayout.cshtml";
+    Page.Title = "反馈";
+}
+
+<div id="modal-example">
+    <div class="uk-modal-dialog uk-modal-body">
+        <form id="createTask" method="post" action="create">
+            <fieldset class="uk-fieldset">
+                <legend class="uk-legend">Create</legend>
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" name="title" placeholder="标题">
+                </div>
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" name="IDs" placeholder="参与者学号 以一个空格分开">
+                </div>
+
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" name="belongTo" placeholder="所属活动">
+                </div>
+
+                <div class="uk-width-1-5@m uk-form">
+                    <div class="uk-tile uk-tile-default uk-padding-remove">
+                            <div class="uk-grid-small uk-child-width-1-1" uk-grid>
+                                <p class="uk-text-meta">选择截止日期</p>
+                                <div uk-grid class="uk-flex uk-flex-left uk-padding-remove-right uk-margin-remove-right">
+                                    <div class="demo-section">
+                                        <input id="datepicker" name="data" style="width: 130px;"/>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    $(document).ready(function() {
+                                        $("#datepicker").kendoDatePicker()
+                                            .closest(".k-widget")
+                                            .attr("id", "datepicker_wrapper");
+
+                                        var datepicker = $("#datepicker").data("kendoDatePicker");
+                                        $("#timeget").click(function() {
+                                            alert(datepicker.value());
+                                        });
+                                    });
+                                </script>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <textarea class="uk-textarea" rows="5" name="description" placeholder="任务描述"></textarea>
+                </div>
+            </fieldset>
+        </form>
+        <button class="uk-button uk-button-primary uk-width-1-4 uk-align-center uk-border-rounded" id="createBt">Submit</button>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model TJSSESU_Website.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.department.introduction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.department.introduction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.position.posName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.position.posName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

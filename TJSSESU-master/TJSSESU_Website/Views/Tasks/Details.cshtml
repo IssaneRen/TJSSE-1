@@ -1,0 +1,58 @@
+﻿@model TJSSESU_Website.Models.Task
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Task</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.user.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.taskTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.taskTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.introduction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.introduction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.publishDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.publishDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.executeStatement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.executeStatement)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.taskID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

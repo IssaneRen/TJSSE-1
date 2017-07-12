@@ -1,0 +1,129 @@
+﻿@{
+    Layout = "../Shared/TaskLayout.cshtml";
+    Page.Title = "反馈";
+}
+<div class="uk-margin" uk-sticky>
+    <button class="uk-button uk-button-secondary uk-width-1-2 uk-align-center uk-border-rounded" uk-toggle="target: #modal-example">Add New Task</button>
+</div>
+
+<div class="uk-container uk-margin-top uk-margin-large-bottom uk-container-center" >
+    <!-- 内容 -->
+        <div class="uk-card uk-card-default uk-card-header ">
+            <div class="uk-clearfix">
+                <div class="uk-float-left">
+                    <h2 class="uk-h2">标题</h2>
+                </div>
+                <div class="uk-float-right uk-margin-right">
+                    <h2 class="uk-h2">时间</h2>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card uk-card-default uk-card-body">
+            <div class="uk-grid-small" uk-grid>
+                <div class="uk-float-left uk-width-1-2@m">
+                    <div class="uk-card-small uk-card-default uk-card-body uk-margin-small uk-card-hover">
+                        <!--<div class="uk-card-badge uk-label">Person</div>-->
+                        <h3 class="uk-card-title">参与人员</h3>
+                        <p>胡嘉鑫，王柠，吕岩松</p>
+                    </div>
+                    <div class="uk-card-small uk-card-default uk-card-body uk-margin-small uk-card-hover">
+                        <!--<div class="uk-card-badge uk-label">Activity</div>-->
+                        <h3 class="uk-card-title">所属活动</h3>
+                        <p>学习</p>
+                    </div>
+                    <div class="uk-card-small uk-card-default uk-card-body uk-margin-small uk-card-hover">
+                        <!--<div class="uk-card-badge uk-label">Activity</div>-->
+                        <h3 class="uk-card-title">任务状态</h3>
+                        <p>正在进行</p>
+                    </div>
+                </div>
+                <div class="uk-float-right uk-width-1-2@m">
+                    <div class="uk-card uk-card-default uk-card-body uk-card-hover">
+                        <div class="uk-card-badge uk-label">detail</div>
+                        <h3 class="uk-card-title">详情</h3>
+                        <p> Lorem ipsum color sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Lorem ipsum color sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Lorem ipsum color sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Lorem ipsum color sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+                        </p>
+                    </div>
+                    @using (Html.BeginForm("CheckTask", "Users", FormMethod.Post)) {
+                        <input style="display=none;" name="taskId"/>
+                        <button class="uk-button uk-button-primary uk-margin uk-float-right" id="checkBt" type="submit">Submit</button>
+                    }
+                </div>
+            </div>
+        </div>
+</div>
+
+<div id="modal-example" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        @using (Html.BeginForm("CreateTask", "Users", FormMethod.Post)) {
+            <fieldset class="uk-fieldset">
+                <legend class="uk-legend">Create</legend>
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" name="title" placeholder="标题">
+                </div>
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" name="IDs" placeholder="参与者学号 以一个空格分开">
+                </div>
+
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" name="belongTo" placeholder="所属活动">
+                </div>
+
+                <div class="uk-width-1-5@m uk-form">
+                    <div class="uk-tile uk-tile-default uk-padding-remove">
+                            <div class="uk-grid-small uk-child-width-1-1" uk-grid>
+                                <p class="uk-text-meta">选择截止日期</p>
+                                <div uk-grid class="uk-flex uk-flex-left uk-padding-remove-right uk-margin-remove-right">
+                                    <div class="demo-section">
+                                        <input id="datepicker" name="data" style="width: 130px;" />
+                                    </div>
+                                </div>
+
+                                <script>
+                                    $(document).ready(function() {
+                                        $("#datepicker").kendoDatePicker()
+                                            .closest(".k-widget")
+                                            .attr("id", "datepicker_wrapper");
+
+                                        var datepicker = $("#datepicker").data("kendoDatePicker");
+                                        $("#timeget").click(function() {
+                                            alert(datepicker.value());
+                                        });
+                                    });
+                                </script>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <textarea class="uk-textarea" rows="5" name="description" placeholder="任务描述"></textarea>
+                </div>
+            </fieldset>
+            <button class="uk-button uk-button-primary uk-width-1-4 uk-align-center uk-border-rounded" id="createBt" type="submit">Submit</button>
+        }
+        
+    </div>
+</div>
+
+<!-- 底部 -->
+<div class="uk-margin">
+        <ul class="uk-pagination uk-flex-center" uk-margin>
+            <li><a href="#"><span uk-pagination-previous></span></a></li>
+            <li><a href="#">1</a></li>
+            <li class="uk-disabled"><span>...</span></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">6</a></li>
+            <li class="uk-active"><span>7</span></li>
+            <li><a href="#">8</a></li>
+            <li><a href="#">9</a></li>
+            <li><a href="#">10</a></li>
+            <li class="uk-disabled"><span>...</span></li>
+            <li><a href="#">20</a></li>
+            <li><a href="#"><span uk-pagination-next></span></a></li>
+        </ul>
+</div>
